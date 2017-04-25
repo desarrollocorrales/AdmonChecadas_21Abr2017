@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.Reporting;
 using Microsoft.Reporting.WinForms;
 
 namespace AdmonChecadas.GUIs.Reportes
@@ -27,29 +28,37 @@ namespace AdmonChecadas.GUIs.Reportes
 
         private void frmhistorialChec_Load(object sender, EventArgs e)
         {
+            try
+            {
+                this._periodoCompleto = this._periodoIni + " - " + this._periodoFin;
 
-            this._periodoCompleto = this._periodoIni + " - " + this._periodoFin;
+                //Limpiemos el DataSource del informe
+                this.reportViewer1.LocalReport.DataSources.Clear();
+                //
+                //Establezcamos los parámetros que enviaremos al reporte
+                //recuerde que son dos para el titulo del reporte y para el nombre de la empresa
+                //
+                ReportParameter[] parameters = new ReportParameter[4];
+                parameters[0] = new ReportParameter("pPeriodoIni", Convert.ToString(this._periodoIni));
+                parameters[1] = new ReportParameter("pPeriodoFin", Convert.ToString(this._periodoFin));
+                parameters[2] = new ReportParameter("pNumChec", Convert.ToString(this._numChec));
+                parameters[3] = new ReportParameter("pPerComp", Convert.ToString(this._periodoCompleto));
+                //
+                //Establezcamos la lista como Datasource del informe
+                //
+                this.reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsChecadas", this._checadas));
+                //
+                //Enviemos la lista de parametros
+                //
+                this.reportViewer1.LocalReport.SetParameters(parameters);
 
-            //Limpiemos el DataSource del informe
-            reportViewer1.LocalReport.DataSources.Clear();
-            //
-            //Establezcamos los parámetros que enviaremos al reporte
-            //recuerde que son dos para el titulo del reporte y para el nombre de la empresa
-            //
-            ReportParameter[] parameters = new ReportParameter[4];
-            parameters[0] = new ReportParameter("pPeriodoIni", Convert.ToString(this._periodoIni));
-            parameters[1] = new ReportParameter("pPeriodoFin", Convert.ToString(this._periodoFin));
-            parameters[2] = new ReportParameter("pNumChec", Convert.ToString(this._numChec));
-            parameters[3] = new ReportParameter("pPerComp", Convert.ToString(this._periodoCompleto));
-            //
-            //Establezcamos la lista como Datasource del informe
-            //
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsChecadas", this._checadas));
-            //
-            //Enviemos la lista de parametros
-            //
-            reportViewer1.LocalReport.SetParameters(parameters);
+                this.reportViewer1.RefreshReport();
 
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "Reporte", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             this.reportViewer1.RefreshReport();
         }
 

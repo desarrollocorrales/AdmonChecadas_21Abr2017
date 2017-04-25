@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdmonChecadas", "AdmonChecadas.csproj", "{0D510505-3E6A-4877-8F6B-3059CCB7526C}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "admonChecadasSetup", "..\admonChecadasSetup\admonChecadasSetup.vdproj", "{076B6104-C252-4ED0-AF1D-D7743AFA86D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,8 @@ Global
 		{0D510505-3E6A-4877-8F6B-3059CCB7526C}.Debug|x86.Build.0 = Debug|x86
 		{0D510505-3E6A-4877-8F6B-3059CCB7526C}.Release|x86.ActiveCfg = Release|x86
 		{0D510505-3E6A-4877-8F6B-3059CCB7526C}.Release|x86.Build.0 = Release|x86
+		{076B6104-C252-4ED0-AF1D-D7743AFA86D4}.Debug|x86.ActiveCfg = Debug
+		{076B6104-C252-4ED0-AF1D-D7743AFA86D4}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

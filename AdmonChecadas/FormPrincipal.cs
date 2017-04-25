@@ -144,6 +144,9 @@ namespace AdmonChecadas
             try
             {
                 // validaciones
+                if (!this._defConfig)
+                    throw new Exception("No se ha definido la configuración");
+                
                 if (this.cmbNumChecador.Items.Count == 0)
                     throw new Exception("No se han realizado descargas en checador");
 
@@ -199,6 +202,9 @@ namespace AdmonChecadas
         {
             try
             {
+                if (!this._defConfig)
+                    throw new Exception("No se ha definido la configuración");
+                
                 List<Modelos.Empleados> empleados = this._consultasMySQLNegocio.getEmpleados();
 
                 // llena el catalogo de empleados disponibles
@@ -216,6 +222,9 @@ namespace AdmonChecadas
         {
             try
             {
+                if (!this._defConfig)
+                    throw new Exception("No se ha definido la configuración");
+                
                 List<Modelos.Departamentos> deptos = this._consultasMySQLNegocio.getDeptos();
 
                 // llena el catalogo de departamentos disponibles
@@ -252,6 +261,9 @@ namespace AdmonChecadas
         {
             try
             {
+                if (!this._defConfig)
+                    throw new Exception("No se ha definido la configuración");
+                
                 if (this.gridView1.RowCount == 0)
                     throw new Exception("Realice una consulta");
 

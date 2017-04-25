@@ -219,7 +219,7 @@
             // cmbNombre
             // 
             this.cmbNombre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbNombre.DropDownWidth = 300;
+            this.cmbNombre.DropDownWidth = 400;
             this.cmbNombre.Enabled = false;
             this.cmbNombre.Font = new System.Drawing.Font("Consolas", 9.75F);
             this.cmbNombre.FormattingEnabled = true;
@@ -276,7 +276,7 @@
             // cmbDpto
             // 
             this.cmbDpto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDpto.DropDownWidth = 300;
+            this.cmbDpto.DropDownWidth = 400;
             this.cmbDpto.Enabled = false;
             this.cmbDpto.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.cmbDpto.FormattingEnabled = true;
