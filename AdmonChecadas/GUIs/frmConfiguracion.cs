@@ -83,12 +83,23 @@ namespace AdmonChecadas.GUIs
         {
             try
             {
+                // validaciones
+                foreach (Control x in this.groupBox2.Controls)
+                {
+                    if (x is TextBox)
+                    {
+                        if (string.IsNullOrEmpty(((TextBox)x).Text))
+                            throw new Exception("Campos incompletos, Por favor verifique");
+                    }
+                }
+
                 Modelos.ConectionString.conn = string.Format(
-                            "Data Source={0};database={1};User Id={2};password={3};",
+                            "server={0};User Id={1};password={2};database={3};",
+                            //"Data Source={0};database={1};User Id={2};password={3};",
                             this.tbServidorMs.Text,
-                            this.tbBaseDeDatosMs.Text,
                             this.tbUsuarioMs.Text,
-                            this.tbContraseniaMs.Text);
+                            this.tbContraseniaMs.Text,
+                            this.tbBaseDeDatosMs.Text);
 
                 this._consultasMySQLNegocio = new ConsultasMySQLNegocio();
 
@@ -97,7 +108,7 @@ namespace AdmonChecadas.GUIs
                 if (pruebaConn)
                     MessageBox.Show("Conexión Exitosa!!!", "Configuración", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
-                    throw new Exception("Falló la conexión a la base de datos del Microsip");
+                    throw new Exception("Falló la conexión a la base de datos");
             }
             catch (Exception Ex)
             {
